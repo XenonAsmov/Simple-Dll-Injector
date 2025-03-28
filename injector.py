@@ -1,12 +1,12 @@
 import ctypes
 
+PROCESS_ALL_ACCESS = 0x1F0FFF
+MEM_COMMIT_RESERVE = 0x3000
+PAGE_READWRITE = 0x04
+MEM_RELEASE = 0x8000
+
 def inject_dll(pid, dll_path):
     kernel32 = ctypes.windll.kernel32Ye
-
-    PROCESS_ALL_ACCESS = 0x1F0FFF
-    MEM_COMMIT_RESERVE = 0x3000
-    PAGE_READWRITE = 0x04
-    MEM_RELEASE = 0x8000
 
     process = kernel32.OpenProcess(PROCESS_ALL_ACCESS, False, pid)
     if not process:
